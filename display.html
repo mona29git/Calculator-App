@@ -1,0 +1,154 @@
+<html>
+  
+<head>
+    <style>
+        body {
+            background-color: #001f4f;
+            font-family: 'Raleway', sans-serif;
+        }
+          
+        .container {
+            width: 350px;
+            height: 500px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            border-radius: 20px;
+        }
+          
+        h1 {
+            position: absolute;
+            left: 50%;
+            top: -60px;
+            width: 300px;
+            transform: translateX(-50%);
+            background-color: #FF851B;
+            color: #fff;
+            font-weight: 100;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            font-size: 18px;
+            text-align: center;
+            padding: 10px;
+        }
+          
+        .wrapper {
+            padding: 20px;
+        }
+          
+        input,
+        select {
+            width: 80%;
+            border: none;
+            border-bottom: 1px solid #0074D9;
+            padding: 10px;
+        }
+          
+        input:focus,
+        select:focus {
+            border: 1px solid #0074D9;
+            outline: none;
+        }
+          
+        select {
+            width: 88% !important;
+        }
+          
+        button {
+            margin: 20px auto;
+            width: 150px;
+            height: 50px;
+            background-color: #39CCCC;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+        }
+          
+        .tip {
+            text-align: center;
+            font-size: 18px;
+            display: none;
+        }
+    </style>
+</head>
+  
+<body>
+
+ <div class="container">
+     <h1>Calculator App</h1>
+ <div class="wrapper">        
+<p id="demo"></p>	 
+<p><span style='color:blue'>Enter first number</span></p>
+ <input id="fn" type="text" onblur="myFunction()"/>
+
+<p><span style='color:blue'>Choose Arithmetic Operator</span></p>
+    <select id="ddlselect" onchange="myFunction()">
+        <option value="Select">Select</option>
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select> 
+
+
+<p><span style='color:blue'>Enter second number</span></p>
+  <input id="sn" type="text" onblur="checkNumber()"/>
+
+
+<button onclick="myFunction()">Result</button>
+<input id="rn" type="text" readonly/>
+<script type="text/javascript">
+       
+        function myFunction()
+        { 
+            var x =  document.getElementById("ddlselect").value;
+            var fn = parseInt(document.getElementById("fn").value);
+            var sn = parseInt(document.getElementById("sn").value);
+            var rn = document.getElementById("rn");
+
+            if (isNaN(fn)) {
+                document.getElementById("demo").innerHTML = "<span style='color:red'>Please put a valid number in the firstbox</span>";
+                return;
+
+            }
+            if (isNaN(sn))
+            {
+                document.getElementById("demo").innerHTML = "<span style='color:red'>Please put a valid number in the secondbox</span>";
+                return;
+
+            }
+
+            switch(x)
+            {
+                case "Select":
+                      document.getElementById("demo").innerHTML = "<span style='color:red'>Please Select Arithmetic Operator</span>";
+                    rn.value ="";
+		    return;
+                case "+":
+                    rn.value = fn + sn;
+                    break;
+                case "-":
+                    rn.value = fn - sn;
+                    break;
+                case "*":
+                    rn.value = fn * sn;
+                    break;
+                case "/":
+                    rn.value = fn / sn;
+                    break;
+                case "%":
+                    rn.value = fn % sn;
+                    break;
+            }
+            document.getElementById("vld").innerHTML = "";
+        }
+		
+    </script>
+	
+</body>
+  
+</html>
